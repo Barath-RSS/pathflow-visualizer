@@ -76,7 +76,7 @@ export function GridBoard({
     const el = document.elementFromPoint(e.clientX, e.clientY) as HTMLElement | null;
     const cell = el?.closest<HTMLElement>("[data-row]");
     if (!cell) return null;
-    return { row: Number(cell.dataset.row), col: Number(cell.dataset.col) };
+    return { row: Number(cell.dataset["row"]), col: Number(cell.dataset["col"]) };
   };
 
   return (
