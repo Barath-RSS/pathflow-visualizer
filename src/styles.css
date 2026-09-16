@@ -26,6 +26,17 @@
   --radius-2xl: calc(var(--radius) + 8px);
   --radius-3xl: calc(var(--radius) + 12px);
   --radius-4xl: calc(var(--radius) + 16px);
+  --color-node-empty: var(--node-empty);
+  --color-node-wall: var(--node-wall);
+  --color-node-start: var(--node-start);
+  --color-node-end: var(--node-end);
+  --color-node-visited: var(--node-visited);
+  --color-node-path: var(--node-path);
+  --color-grid-line: var(--grid-line);
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
