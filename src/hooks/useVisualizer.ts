@@ -249,7 +249,7 @@ export function useVisualizer(rows = DEFAULT_ROWS, cols = DEFAULT_COLS) {
 
   return {
     registry,
-    grid,
+    grid: displayGrid,
     start,
     end,
     algorithm,
