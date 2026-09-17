@@ -178,7 +178,7 @@
   --ring: oklch(0.72 0.16 195);
 
   --node-empty: oklch(0.235 0.02 265);
-  --node-wall: oklch(0.13 0.015 265);
+  --node-wall: oklch(0.48 0.045 252);
   --node-start: oklch(0.75 0.19 150);
   --node-end: oklch(0.63 0.22 22);
   --node-visited: oklch(0.55 0.17 274);
@@ -217,6 +217,17 @@
   }
 }
 
+@keyframes wall-build {
+  0% {
+    transform: scale(0.72);
+    filter: brightness(1.35);
+  }
+  100% {
+    transform: scale(1);
+    filter: brightness(1);
+  }
+}
+
 .node {
   background-color: var(--node-empty);
   transition:
@@ -225,8 +236,12 @@
 }
 .node-wall {
   background-color: var(--node-wall);
+  border-color: color-mix(in oklch, var(--node-wall), var(--foreground) 32%);
+  box-shadow:
+    inset 0 0 0 1px color-mix(in oklch, var(--node-wall), var(--foreground) 18%),
+    inset 0 -3px 0 color-mix(in oklch, var(--node-wall), var(--background) 30%);
   transform: scale(1);
-  animation: node-path 140ms ease-out reverse;
+  animation: wall-build 160ms ease-out;
 }
 .node-visited {
   background-color: var(--node-visited);
