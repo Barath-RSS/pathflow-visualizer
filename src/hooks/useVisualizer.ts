@@ -53,13 +53,15 @@ export function useVisualizer(rows = DEFAULT_ROWS, cols = DEFAULT_COLS) {
   const paintMode = useRef<PaintMode>(null);
   speedRef.current = speed;
 
-  /** Composite grid used by the algorithms (walls + endpoints). */
-  const solveGrid = useCallback((): Grid => {
+  /** Composite grid used by the algorithms and for rendering (walls + endpoints). */
+  const displayGrid = useMemo<Grid>(() => {
     const g = cloneGrid(grid);
     g[start.row]![start.col] = "start";
     g[end.row]![end.col] = "end";
     return g;
   }, [grid, start, end]);
+
+  const solveGrid = useCallback((): Grid => displayGrid, [displayGrid]);
 
   const clearOverlay = useCallback(() => {
     registry.map.forEach((el) => el.classList.remove("node-visited", "node-path"));
@@ -247,7 +249,7 @@ export function useVisualizer(rows = DEFAULT_ROWS, cols = DEFAULT_COLS) {
 
   return {
     registry,
-    grid,
+    grid: displayGrid,
     start,
     end,
     algorithm,
